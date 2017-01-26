@@ -174,19 +174,23 @@ void processmpdFile(string filename, int &timescale, int &duration, string &vide
     cout << XMLString::transcode(docRootNode->getAttributes()->getNamedItem(XMLString::transcode("mediaPresentationDuration"))->getNodeValue()) << endl;
     
     string rawTotalDuration = XMLString::transcode(docRootNode->getAttributes()->getNamedItem(XMLString::transcode("mediaPresentationDuration"))->getNodeValue());
-    regex r("PT(\\d*)H?(\\d*)M?(\\d*)S");
+    regex r("PT(\\d*)H?(\\d*)M?(\\d*)S?");
     smatch m;
     regex_search(rawTotalDuration, m, r);
     
     totalseconds = 0;
-    totalseconds += stoi(m[m.size()-1]);
-    if (m.size()>2) {
-        totalseconds += stoi(m[m.size()-2])*60;
-    }
-    if (m.size()>3) {
-        totalseconds += stoi(m[m.size()-3])*3600;
+    
+    if (m[1]!="") {
+        totalseconds += stoi(m[1])*3600;
     }
     
+    if (m[2]!="") {
+        totalseconds += stoi(m[2])*60;
+    }
+    
+    if (m[3]!="") {
+        totalseconds += stoi(m[3]);
+    }
     
     // Get Video Segment tag
     DOMNode *videoSegmentTemplate = docRootNode->getChildNodes()->item(1)->getChildNodes()->item(1)->getChildNodes()->item(1)->getChildNodes()->item(1);
