@@ -1,7 +1,7 @@
 # Tide (Alpha) and Tide-MPD (Alpha)
 Tide is a m3u8 video downloader written in C++. It first reads the url of m3u8 file supplied by user, then downloads all video segments into a single file for local playback using libcurl.
 
-Tide-MPD, on the other hand, works with streams in MPEG-DASH MPD format. It reads the url of mpd file supplied by user, then downloads all video and audio segments into two files, and finally merge them together with ffmpeg.
+Tide-MPD, on the other hand, works with streams in MPEG-DASH MPD format. It reads the url of mpd file supplied by user, then downloads all video and audio segments into two files, and finally merges them together with ffmpeg.
 
 ## Usage
 ```
