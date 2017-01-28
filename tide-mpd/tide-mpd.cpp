@@ -174,7 +174,7 @@ void processmpdFile(string filename, int &timescale, int &duration, string &vide
     cout << XMLString::transcode(docRootNode->getAttributes()->getNamedItem(XMLString::transcode("mediaPresentationDuration"))->getNodeValue()) << endl;
     
     string rawTotalDuration = XMLString::transcode(docRootNode->getAttributes()->getNamedItem(XMLString::transcode("mediaPresentationDuration"))->getNodeValue());
-    regex r("PT(\\d*)H?(\\d*)M?(\\d*)S?");
+    regex r("PT(\\d*H)?(\\d*M)?(\\d*S)?");
     smatch m;
     regex_search(rawTotalDuration, m, r);
     
