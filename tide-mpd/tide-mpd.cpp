@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <regex>
+#include <math.h>
 #include <stdio.h>
 #include <curl/curl.h>
 #include <xercesc/util/PlatformUtils.hpp>
